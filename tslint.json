@@ -11,12 +11,13 @@
         "trailing-comma": false,
         "ter-indent": [
             true,
-            4,
+            2,
             {
                 "SwitchCase": 1
             }
         ],
         "variable-name": false,
+        "import-name": false,
         "jsx-alignment": true,
         "jsx-equals-spacing": [true, "never"],
         "jsx-no-string-ref": true,
