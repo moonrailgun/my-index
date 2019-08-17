@@ -50,7 +50,7 @@
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMock.js",
-      "\\.(s?css|sass)$": "<rootDir>/mocks/styleMock.js"
+      "\\.(css|less)$": "<rootDir>/mocks/styleMock.js"
     }
   },
   "build": {
@@ -118,12 +118,10 @@
     "image-webpack-loader": "^4.6.0",
     "jest": "^24.8.0",
     "lint-staged": "^8.1.7",
-    "node-sass": "^4.12.0",
     "prettier": "^1.17.1",
     "react-hot-loader": "^4.8.8",
     "react-test-renderer": "^16.8.6",
     "redux-devtools-extension": "^2.13.5",
-    "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "spectron": "^5.0.0",
     "style-loader": "^0.23.1",
