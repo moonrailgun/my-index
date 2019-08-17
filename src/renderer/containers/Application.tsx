@@ -5,7 +5,6 @@ import MainContainer from './MainContainer';
 
 const Application = () => (
   <div>
-    Hello World from Electron!
     <MainContainer />
   </div>
 );
