@@ -1,6 +1,8 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import { regListener } from './listener';
+import './db';
 
 let win: BrowserWindow | null;
 
@@ -29,7 +31,7 @@ const createWindow = async () => {
       url.format({
         pathname: path.join(__dirname, 'index.html'),
         protocol: 'file:',
-        slashes: true
+        slashes: true,
       })
     );
   }
@@ -59,3 +61,5 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+regListener();

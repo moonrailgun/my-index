@@ -1,6 +1,7 @@
 import React from 'react';
 import SplitPane from 'react-split-pane';
 import { Input, Select, notification } from 'antd';
+import { ipcRenderer } from 'electron';
 import { checkUrl } from '../../shared/string-helper';
 import WebView from '../components/WebView';
 const Option = Select.Option;
@@ -40,6 +41,7 @@ class MainContainer extends React.Component {
 
   handleFetchUrl = (url: string) => {
     console.log('fetch', url);
+    ipcRenderer.send('fetch-url', url);
   };
 
   render() {
