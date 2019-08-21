@@ -16,6 +16,7 @@
                 "SwitchCase": 1
             }
         ],
+        "object-shorthand-properties-first": false,
         "variable-name": false,
         "import-name": false,
         "jsx-alignment": true,
