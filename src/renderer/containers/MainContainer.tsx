@@ -11,7 +11,7 @@ class MainContainer extends React.Component {
   state = {
     protocol: 'http://',
     url: '',
-    webviewSrc: ''
+    webviewSrc: '',
   };
 
   SelectBefore = (
@@ -33,7 +33,7 @@ class MainContainer extends React.Component {
     } else {
       notification.warning({
         message: '请输入一个合法的Url',
-        placement: 'bottomLeft'
+        placement: 'bottomLeft',
       });
     }
   };

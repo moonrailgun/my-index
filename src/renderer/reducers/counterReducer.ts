@@ -7,7 +7,7 @@ export interface CounterState {
 }
 
 const defaultState: CounterState = {
-  value: 0
+  value: 0,
 };
 
 export const counterReducer: Reducer<CounterState> = (
@@ -18,12 +18,12 @@ export const counterReducer: Reducer<CounterState> = (
     case INCREMENT:
       return {
         ...state,
-        value: state.value + 1
+        value: state.value + 1,
       };
     case DECREMENT:
       return {
         ...state,
-        value: state.value - 1
+        value: state.value - 1,
       };
     default:
       return state;

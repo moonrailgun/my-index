@@ -10,7 +10,7 @@ interface Props {
 }
 class Webview extends React.Component<Props> {
   state = {
-    canFetch: false
+    canFetch: false,
   };
   ref?: WebviewTag;
 
@@ -48,7 +48,7 @@ class Webview extends React.Component<Props> {
               style={{
                 position: 'absolute',
                 right: 20,
-                top
+                top,
               }}
               onClick={this.handleSave}
             >
