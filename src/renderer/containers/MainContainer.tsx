@@ -15,17 +15,6 @@ class MainContainer extends React.Component {
     webviewSrc: '',
   };
 
-  SelectBefore = (
-    <Select
-      value={this.state.protocol}
-      onSelect={(val: string) => this.setState({ protocol: val })}
-      style={{ width: 90 }}
-    >
-      <Option value="http://">http://</Option>
-      <Option value="https://">https://</Option>
-    </Select>
-  );
-
   handleEnterUrl = () => {
     const url = this.state.protocol + this.state.url;
     console.log('url:', url);
@@ -47,11 +36,22 @@ class MainContainer extends React.Component {
   render() {
     const { url, webviewSrc } = this.state;
 
+    const SelectBefore = (
+      <Select
+        value={this.state.protocol}
+        onSelect={(val: string) => this.setState({ protocol: val })}
+        style={{ width: 90 }}
+      >
+        <Option value="http://">http://</Option>
+        <Option value="https://">https://</Option>
+      </Select>
+    );
+
     return (
       <div>
         <Input
           value={url}
-          addonBefore={this.SelectBefore}
+          addonBefore={SelectBefore}
           onChange={e => this.setState({ url: e.target.value })}
           onPressEnter={this.handleEnterUrl}
         />
