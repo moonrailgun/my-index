@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as url from 'url';
 import { regListener } from './listener';
 import './db';
+import { setMenu } from './menu';
 
 let win: BrowserWindow | null;
 
@@ -42,6 +43,8 @@ const createWindow = async () => {
       win!.webContents.openDevTools();
     });
   }
+
+  setMenu(); // 设置菜单项
 
   win.on('closed', () => {
     win = null;
