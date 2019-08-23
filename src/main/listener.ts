@@ -1,6 +1,6 @@
 import { ipcMain } from 'electron';
 import { fetchUrl } from './event/fetch-url';
-import { getPages } from './event/get-pages';
+import { getAllPages } from './event/get-pages';
 
 /**
  * 注册监听器
@@ -12,7 +12,7 @@ export const regListener = () => {
   });
 
   ipcMain.on('get-pages', async (event: any) => {
-    const pages = await getPages();
+    const pages = await getAllPages();
     event.sender.send('update-page-list', pages);
   });
 };
