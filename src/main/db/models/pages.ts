@@ -1,6 +1,10 @@
 import { Model, Sequelize, STRING } from 'sequelize';
 
-export class Pages extends Model {}
+export class Pages extends Model {
+  domain: string;
+  path: string;
+  document: string;
+}
 
 export const regPages = (sequelize: Sequelize) => {
   Pages.init(
@@ -17,6 +21,14 @@ export const regPages = (sequelize: Sequelize) => {
         type: STRING,
       },
     },
-    { sequelize }
+    {
+      sequelize,
+      indexes: [
+        {
+          unique: true,
+          fields: ['domain', 'path'],
+        },
+      ],
+    }
   );
 };

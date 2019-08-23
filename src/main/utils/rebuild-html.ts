@@ -3,7 +3,7 @@ import _get from 'lodash/get';
 import _set from 'lodash/set';
 import _cloneDeep from 'lodash/cloneDeep';
 import urlUtils from 'url';
-import { transformScriptUrl } from './url-transform';
+import { transformUrlToLocalPath } from './path-helper';
 
 interface PageContext {
   url: string;
@@ -41,7 +41,7 @@ export const rebuildHtml = (htmlStr: string, pageContext: Readonly<PageContext>)
 
   return {
     html: js2html(obj),
-    assets: context.assets,
+    assets: context.assets || [],
   };
 };
 
@@ -72,17 +72,17 @@ export const travelNode = (node: Element, context: PageContext) => {
     const { host, pathname } = urlUtils.parse(scriptSrc); // 使用pathname不包括querystring
     if (host === null) {
       // 是一个内部地址
-      if (pathname && pathname.startsWith('/')) {
+      if (pathname) {
         // path是一个绝对路径
         scriptSrc = urlUtils.resolve(context.url, pathname);
       }
     }
 
-    const scriptLocalPath = transformScriptUrl(scriptSrc);
+    const scriptLocalPath = transformUrlToLocalPath(scriptSrc);
     // TODO: 需要处理相对当前网页的路径，或者file协议
 
     _set(node, 'attributes.src', scriptLocalPath);
-    context.assets.push(scriptLocalPath);
+    context.assets.push(scriptSrc);
   }
 
   const children = node.elements || [];

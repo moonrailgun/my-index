@@ -1,5 +1,6 @@
 import { app } from 'electron';
 import pathUtils from 'path';
+import urlUtils from 'url';
 
 /**
  * 获取资源文件地址
@@ -26,4 +27,14 @@ export const padDefaultFilePath = (path: string) => {
 
   ret += 'index.html';
   return ret;
+};
+
+/**
+ * 将完整的网络路径转化为本地相对路径
+ * @param fullUrl 完整网络路径
+ */
+export const transformUrlToLocalPath = (fullUrl: string) => {
+  const { protocol = 'http:', host, pathname = '' } = urlUtils.parse(fullUrl);
+
+  return `${protocol.replace(':', '')}/${host}${padDefaultFilePath(pathname)}`;
 };
