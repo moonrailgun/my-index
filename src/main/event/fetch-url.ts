@@ -26,7 +26,7 @@ export const fetchUrl = async (url: string) => {
 
   if (page) {
     // 如果已存在则更新
-    page.document = html;
+    page.setDataValue('document' as any, html);
     await page.save();
   } else {
     await Pages.create({

@@ -1,9 +1,11 @@
-import { Model, Sequelize, STRING } from 'sequelize';
+import { Model, Sequelize, STRING, TEXT } from 'sequelize';
 
 export class Pages extends Model {
-  domain: string;
-  path: string;
-  document: string;
+  // 这里有个BUG 如果这里定义了模型字段后会重置数据
+  // 有时间找找问题
+  // domain: string;
+  // path: string;
+  // document: string;
 }
 
 export const regPages = (sequelize: Sequelize) => {
@@ -18,7 +20,7 @@ export const regPages = (sequelize: Sequelize) => {
         allowNull: false,
       },
       document: {
-        type: STRING,
+        type: TEXT,
       },
     },
     {
