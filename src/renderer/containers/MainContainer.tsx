@@ -10,13 +10,12 @@ import './MainContainer.css';
 
 class MainContainer extends React.Component {
   state = {
-    protocol: 'http://',
     url: '',
     webviewSrc: '',
   };
 
   handleEnterUrl = () => {
-    const url = this.state.protocol + this.state.url;
+    const url = this.state.url;
     console.log('url:', url);
     if (checkUrl(url)) {
       this.setState({ webviewSrc: url });
@@ -36,22 +35,10 @@ class MainContainer extends React.Component {
   render() {
     const { url, webviewSrc } = this.state;
 
-    const SelectBefore = (
-      <Select
-        value={this.state.protocol}
-        onSelect={(val: string) => this.setState({ protocol: val })}
-        style={{ width: 90 }}
-      >
-        <Option value="http://">http://</Option>
-        <Option value="https://">https://</Option>
-      </Select>
-    );
-
     return (
       <div>
         <Input
           value={url}
-          addonBefore={SelectBefore}
           onChange={e => this.setState({ url: e.target.value })}
           onPressEnter={this.handleEnterUrl}
         />
